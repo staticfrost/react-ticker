@@ -43,6 +43,42 @@ class Tickers extends Component {
           percent_change_1h: "0",
           percent_change_24h: "0",
           percent_change_7d: "0"
+        },
+        {
+          id: "binance-coin",
+          name: "Binance Coin",
+          symbol: "BNB",
+          price_usd: "1",
+          percent_change_1h: "0",
+          percent_change_24h: "0",
+          percent_change_7d: "0"
+        },
+        {
+          id: "omisego",
+          name: "OmiseGO",
+          symbol: "OMG",
+          price_usd: "1",
+          percent_change_1h: "0",
+          percent_change_24h: "0",
+          percent_change_7d: "0"
+        },
+        {
+          id: "stellar",
+          name: "Stellar",
+          symbol: "XML",
+          price_usd: "1",
+          percent_change_1h: "0",
+          percent_change_24h: "0",
+          percent_change_7d: "0"
+        },
+        {
+          id: "icon",
+          name: "Icon",
+          symbol: "ICX",
+          price_usd: "1",
+          percent_change_1h: "0",
+          percent_change_24h: "0",
+          percent_change_7d: "0"
         }
       ]
     };
@@ -60,7 +96,7 @@ class Tickers extends Component {
     axios
       .get("https://api.coinmarketcap.com/v1/ticker/")
       .then(response => {
-        var wanted = ["bitcoin", "ethereum", "litecoin", "cardano"];
+        var wanted = ["bitcoin", "ethereum", "litecoin", "cardano", "binance-coin", "omisego", "stellar", "icon"];
         var result = response.data.filter(currency =>
           wanted.includes(currency.id)
         );
@@ -75,7 +111,12 @@ class Tickers extends Component {
     ));
     return (
       <div className="tickers-container">
-        <ul className="tickers">{tickers}</ul>
+        <p>
+        <ul className="tickers">{tickers.slice(0, 4)}</ul>
+        </p>
+        <p>
+        <ul className="tickers">{tickers.slice(4, 8)}</ul>
+        </p>
         <p>Information updated every minute courtesy of coinmarketcap.com</p>
       </div>
     );

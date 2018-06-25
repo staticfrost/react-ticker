@@ -34,6 +34,15 @@ class Tickers extends Component {
           percent_change_1h: "0",
           percent_change_24h: "0",
           percent_change_7d: "0"
+        },
+        {
+          id: "cardano",
+          name: "Cardano",
+          symbol: "ADA",
+          price_usd: "1",
+          percent_change_1h: "0",
+          percent_change_24h: "0",
+          percent_change_7d: "0"
         }
       ]
     };
@@ -51,7 +60,7 @@ class Tickers extends Component {
     axios
       .get("https://api.coinmarketcap.com/v1/ticker/")
       .then(response => {
-        var wanted = ["bitcoin", "ethereum", "litecoin"];
+        var wanted = ["bitcoin", "ethereum", "litecoin", "cardano"];
         var result = response.data.filter(currency =>
           wanted.includes(currency.id)
         );
